@@ -1,0 +1,87 @@
+// FLEXBOX.scss
+
+@mixin display-flex {
+	display: -webkit-box;      /* OLD - iOS 6-, Safari 3.1-6 */
+  	display: -moz-box;         /* OLD - Firefox 19- (buggy but mostly works) */
+  	display: -ms-flexbox;      /* TWEENER - IE 10 */
+  	display: -webkit-flex;     /* NEW - Chrome */
+  	display: flex;
+  	display: -ms-flexbox;      /* TWEENER - IE 10 */
+	
+}
+
+@mixin flex-align($alignment: center) {
+	@if $alignment == 'flex-start' {
+		align-items: flex-start;
+		-webkit-box-align: start;
+		-ms-flex-align: start;
+
+	} @else if $alignment == 'flex-end' {
+		align-items: flex-end;
+		-webkit-box-align: end;
+		-ms-flex-align: end;
+
+	} @else {
+		align-items: $alignment;
+		-webkit-box-align: $alignment;
+		-ms-flex-align: $alignment;
+	}
+}
+
+@mixin flex($size: 1) {
+	flex: $size;
+	-webkit-box-flex: $size;
+	-ms-flex-preferred-size: 100%;
+	-ms-flex: $size;				        
+}
+
+@mixin flex-order($order: initial) {
+	order: $order;
+	-webkit-box-ordinal-group: $order + 1;
+	-ms-flex-order: $order;				        
+}
+
+
+@mixin flex-wrap($wrap: wrap) {
+	flex-wrap: $wrap;
+	-ms-flex-wrap: $wrap;			        
+}
+
+
+@mixin flex-direction($direction: row) {
+	@if $direction == 'column' {
+		flex-direction: column;
+		-webkit-box-orient: vertical;
+		-webkit-box-direction: normal;
+		-ms-flex-direction: column;
+	} else {
+		flex-direction: row;
+		-webkit-box-orient: horizontal;
+		-webkit-box-direction: normal;
+		-ms-flex-direction: row;
+	}      
+}
+
+@mixin flex-justify($position: center) {
+	
+	@if $position == 'space-between' {
+		justify-content: space-between;
+	    -webkit-box-pack: justify;
+	    -ms-flex-pack: justify;
+
+	} @else if $position == 'space-around'  {
+	   	justify-content: space-around;
+	   	-ms-flex-pack: distribute;
+
+	} @else if $position == 'flex-end'{
+		justify-content: flex-end;
+		-webkit-box-pack: end;
+        -ms-flex-pack: end;
+
+   	} @else {
+        justify-content: $position;
+		-webkit-box-pack: $position;
+		-ms-flex-pack: $position;
+   	}
+}
+			        

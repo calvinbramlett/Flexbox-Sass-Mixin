@@ -1,13 +1,21 @@
 // FLEXBOX.scss
 
-@mixin display-flex {
-	display: -webkit-box;      /* OLD - iOS 6-, Safari 3.1-6 */
-  	display: -moz-box;         /* OLD - Firefox 19- (buggy but mostly works) */
-  	display: -ms-flexbox;      /* TWEENER - IE 10 */
-  	display: -webkit-flex;     /* NEW - Chrome */
-  	display: flex;
-  	display: -ms-flexbox;      /* TWEENER - IE 10 */
-	
+@mixin display-flex($display: flex) {
+	@if $display == 'inline-flex' {
+		display: -webkit-inline-box;    /* OLD - iOS 6-, Safari 3.1-6 */
+	  	display: -moz-inline-box;       /* OLD - Firefox 19- (buggy but mostly works) */
+	  	display: -ms-inline-flexbox;    /* TWEENER - IE 10 */
+	  	display: -webkit-flex;     		/* NEW - Chrome */
+	  	display: inline-flex;
+	  	display: -ms-inline-flexbox;    /* TWEENER - IE 10 */
+	} @else {
+		display: -webkit-box;      		/* OLD - iOS 6-, Safari 3.1-6 */
+	  	display: -moz-box;         		/* OLD - Firefox 19- (buggy but mostly works) */
+	  	display: -ms-flexbox;      		/* TWEENER - IE 10 */
+	  	display: -webkit-flex;     		/* NEW - Chrome */
+	  	display: flex;
+	  	display: -ms-flexbox;      		/* TWEENER - IE 10 */
+	}
 }
 
 @mixin flex-align($alignment: center) {
@@ -33,6 +41,18 @@
 	-webkit-box-flex: $size;
 	-ms-flex-preferred-size: 100%;
 	-ms-flex: $size;				        
+}
+
+@mixin flex-grow($size: 1) {
+	-webkit-flex-grow: $size;
+    -ms-flex-grow: $size;
+    flex-grow: $size;
+}
+
+@mixin flex-shrink($size: 1) {
+	-webkit-flex-shrink: $size;
+    -ms-flex-shrink: $size;
+    flex-shrink: $size;
 }
 
 @mixin flex-order($order: initial) {
@@ -84,4 +104,51 @@
 		-ms-flex-pack: $position;
    	}
 }
-			        
+
+.flex-wrap {
+	@include flex-wrap;
+}
+
+.flex-1 {
+	@include flex;
+}
+
+.display-flex {
+	@include display-flex;
+}
+.flex-align {
+	@include flex-align;
+	&-center {
+		@include flex-align;
+	}
+	&-start {
+		@include flex-align(flex-start);
+	}
+	&-end {
+		@include flex-align(flex-end);
+	}
+}
+
+.flex-direction-column {
+	@include flex-direction(column);
+}
+
+.flex-direction-row {
+	@include flex-direction(row);
+}
+			
+.flex-justify {
+	@include flex-justify;
+	&-center {
+		@include flex-justify;
+	}
+	&-between {
+		@include flex-justify(space-between);
+	}
+	&-around {
+		@include flex-justify(space-around);
+	}
+	&-end {
+		@include flex-justify(flex-end);
+	}
+}

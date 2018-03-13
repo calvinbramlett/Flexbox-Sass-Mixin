@@ -74,7 +74,7 @@
 		-webkit-box-orient: vertical;
 		-webkit-box-direction: normal;
 		-ms-flex-direction: column;
-	} else {
+	} @else {
 		flex-direction: row;
 		-webkit-box-orient: horizontal;
 		-webkit-box-direction: normal;
